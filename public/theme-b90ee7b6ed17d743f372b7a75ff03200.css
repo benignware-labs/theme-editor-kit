@@ -1,0 +1,139 @@
+/* theme.css */
+:root, [data-color-scheme="light"] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #aaaaaa;
+  --primary-color: #22bb22;
+  --error-color: #ff0000;
+  --primary-text-color: #ffffff;
+  --font-size: 16px;
+  --font-family: Arial;
+  --border-width: 1px;
+}
+
+[data-color-scheme="dark"] {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --border-color: #888888;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+.form-control {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 10px;
+}
+
+.form-control:not([type="color"]):not([type="radio"]):not([type="checkbox"]) {
+  padding: 0.4rem 0.6rem;
+  display: block;
+}
+
+.form-control:invalid {
+  border-color: var(--error-color);
+}
+
+.input-feedback {
+  display: none;
+  font-size: 80%;
+  margin-top: 0.25rem;
+}
+
+.form-control:invalid ~ .input-feedback {
+  color: var(--error-color);
+  display: block;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.form-control + .form-label {
+  display: inline-block;
+  margin-left: .25rem;
+  margin-bottom: 0;
+  vertical-align: text-top;
+}
+
+.radio-group {
+  display: inline-flex;
+  gap: 1rem;
+}
+
+.radio-group [type="radio"] {
+  margin: 0;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.input-group .form-control {
+    position: relative;
+    /*flex: 1 1 auto;
+    width: 1%;*/
+    min-width: 0;
+    height: auto;
+}
+
+.input-group .form-control:not(:first-child) {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group .form-control:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.button {
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+}
+
+.button-primary {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+}
+
+.modal {
+  max-width: 70vw;
+}
+
+.menu,
+.modal {
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+}
+
+.menu {
+  overflow: auto;
+  max-height: 280px;
+  width: max-content;
+}
+
+.menu-item {
+  padding: 0.4rem 0.6rem;
+  display: block;
+}
+
+.menu-item.active {
+  background-color: var(--background-color);
+}
+

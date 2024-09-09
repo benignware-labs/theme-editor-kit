@@ -1,0 +1,150 @@
+.hljs {
+  /* Colors */
+  --grey: rgb(141, 150, 160); /* Comment */
+  --blue: rgb(238, 130, 119)	; /* Functions */
+  --red: #dc3958; /* Kimbie Red */
+  --orange: #f79a32; /* Kimbie Orange */
+  --green: #889b4a; /* Kimbie Green */
+  --aqua: #088649; /* Kimbie Aqua */
+  --purple: #98676a; /* Kimbie Purple */
+
+
+   /* <?php rgb(141, 150, 160) */
+  
+
+  /* Elements */
+  --hljs-comment: var(--grey);
+  --hljs-title: var(--blue);
+  --hljs-variable: var(--red);
+  --hljs-attribute: var(--red);
+  --hljs-tag: var(--red);
+  --hljs-regexp: var(--red);
+  --hljs-name: var(--red);
+  --hljs-constant: var(--orange);
+  --hljs-number: var(--orange);
+  --hljs-preprocessor: var(--orange);
+  --hljs-built_in: var(--orange);
+  --hljs-literal: var(--orange);
+  --hljs-params: var(--orange);
+  --hljs-string: var(--green);
+  --hljs-value: var(--green);
+  --hljs-inheritance: var(--green);
+  --hljs-header: var(--green);
+  --hljs-symbol: var(--green);
+  --hljs-cdata: var(--green);
+  --hljs-hexcolor: var(--aqua);
+  --hljs-function: var(--blue);
+  --hljs-keyword: var(--purple);
+}
+
+
+.hljs-comment {
+  color: var(--hljs-comment);
+}
+
+.hljs-title {
+  color: var(--hljs-title);
+}
+
+.hljs-variable {
+  color: var(--hljs-variable);
+}
+
+.hljs-attribute {
+  color: var(--hljs-attribute);
+}
+
+.hljs-tag {
+  color: var(--hljs-tag);
+}
+
+.hljs-regexp {
+  color: var(--hljs-regexp);
+}
+
+.hljs-name {
+  color: var(--hljs-name);
+}
+
+.hljs-constant {
+  color: var(--hljs-constant);
+}
+
+.hljs-number {
+  color: var(--hljs-number);
+}
+
+.hljs-preprocessor {
+  color: var(--hljs-preprocessor);
+}
+
+.hljs-built_in {
+  color: var(--hljs-built_in);
+}
+
+.hljs-literal {
+  color: var(--hljs-literal);
+}
+
+.hljs-params {
+  color: var(--hljs-params);
+}
+
+.hljs-string {
+  color: var(--hljs-string);
+}
+
+.hljs-value {
+  color: var(--hljs-value);
+}
+
+.hljs-inheritance {
+  color: var(--hljs-inheritance);
+}
+
+.hljs-header {
+  color: var(--hljs-header);
+}
+
+.hljs-symbol {
+  color: var(--hljs-symbol);
+}
+
+.hljs-cdata {
+  color: var(--hljs-cdata);
+}
+
+.hljs-hexcolor {
+  color: var(--hljs-hexcolor);
+}
+
+.hljs-function {
+  color: var(--hljs-function);
+}
+
+.hljs-title {
+  color: var(--hljs-title);
+}
+
+.hljs-keyword {
+  color: var(--hljs-keyword);
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #221a0f;
+  color: #d3af86;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

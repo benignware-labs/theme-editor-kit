@@ -1,0 +1,491 @@
+<html>
+  <head>
+    <base href="."/>
+    <title>theme-editor-kit - theme-editor-kit</title>
+
+    <link rel="stylesheet" href="public/github-markdown.min-05fea8df8ec68cb6c27337f6db65733e.css">
+    <link rel="stylesheet" href="public/highlight-c281e701b2830b095c67417cd9a7b210.css">
+    <link rel="stylesheet" href="public/style-aea3468ccb7ee0c3c4c2b5d339fc989e.css">
+    <link rel="stylesheet" href="public/all-cc69a8b8824029ae06797ee01a3cc5c8.css">
+    <!-- <link rel="stylesheet" href="public/400-778daa1066fcc9c181a5d4dec3c4b74e.css"> -->
+
+    <!-- <style>
+      @font-face {
+        font-family: "EmojiSymbols";
+        src: url("https://db.onlinewebfonts.com/t/5b026bf0b879e4356472ed8c36dc48c7.eot");
+        src: url("https://db.onlinewebfonts.com/t/5b026bf0b879e4356472ed8c36dc48c7.eot?#iefix")format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/5b026bf0b879e4356472ed8c36dc48c7.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/5b026bf0b879e4356472ed8c36dc48c7.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/5b026bf0b879e4356472ed8c36dc48c7.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/5b026bf0b879e4356472ed8c36dc48c7.svg#EmojiSymbols-Regular")format("svg");
+      }
+
+    </style> -->
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/segoe-fonts@1.0.1/segoe-fonts.min.css"> -->
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&display=swap" rel="stylesheet"> -->
+
+    <script src="public/plugins/core/example/viewers/IFrameViewer.js"></script><script src="public/plugins/core/example/viewers/ShadowViewer.js"></script><script src="public/plugins/core/example/viewers/HostViewer.js"></script>
+              <script type="importmap">
+              {
+                "imports": {
+                  "theme-editor-kit": "./public/themeEditorKit.mjs"
+                }
+              }
+            </script>
+              <script src="public/themeEditorKit.mjs" type="module"></script>
+            
+  </head>
+  <body class="markdown-body flex-column">
+    <div class="header flex">
+      <a class="header-brand" href="./index.html">theme-editor-kit</a>
+      
+<ul class="menu flex align-center justify-center">
+  
+</ul>
+      <nav class="links">
+        
+          
+            
+          
+        
+      </nav>
+    </div>
+      
+      
+
+<main class="flex-grow flex-column h-100 container-fluid">
+  <div class="container-xl flex">
+    <div class="flex-grow">
+      <div>
+        <h1>theme-editor-kit</h1>
+        <p>Utility kit for building inline css theme editor</p>
+<p>Looking for a way to edit and preview your theme's custom parameters with examples?
+But don't want to deal with abstract and isolated config files?</p>
+<p>Theme Editor Kit provides you with a pragamatic solution and declarative approach to theme editing. The idea is to have a sample page for our theme with the theme editor form embedded.</p>
+<h2>Getting started</h2>
+<p>So, here's a basic example.</p>
+<p>
+
+    <iframe-viewer >
+      <template slot="head">
+        
+          <script type="importmap">
+            {
+              "imports": {
+                "theme-editor-kit": "./public/themeEditorKit.mjs"
+              }
+            }
+          </script>
+        <script type="module" src="public/themeEditorKit.mjs"></script>
+      </template>
+      <template slot="body">
+        <link rel="stylesheet" href="public/theme-b90ee7b6ed17d743f372b7a75ff03200.css" data-theme-editor-asset="inline"/>
+<h1>Theme Editor</h1>
+<p>Generate a stylesheet for your theme</p>
+<form id="themeEditor" data-theme-editor>
+  <h4>Color Scheme</h4>
+  <p>
+    <label class="form-label">Color Scheme</label>
+    <span class="radio-group">
+      <span class="radio-item">
+        <input id="theme-light" name="selector(body)::attribute(data-color-scheme)" type="radio" class="form-control" value="light" checked>
+        <label for="theme-light" class="form-label">Light</label>
+      </span>
+      <span class="radio-item">
+        <input id="theme-dark" name="selector(body)::attribute(data-color-scheme)" type="radio" class="form-control" value="dark">
+        <label for="theme-dark" class="form-label">Dark</label>
+      </span>
+    </span>
+  </p>
+  <div hidden data-hidden-if="[data-color-scheme='dark']">
+    <p class="mb-3">
+        <label for="textColorDark" class="form-label">Body Color (Dark)</label>
+        <span class="input-group">
+          <input type="color" class="form-control form-control-color" data-sync="textColorDark">
+          <input id="textdColorDark" name="selector([data-color-scheme=dark])::property(--text-color)" type="text" class="form-control"  data-sync="textColorDark" data-type="color">
+          <div class="invalid-feedback" data-sync="textColorDark" data-type="feedback"></div>
+        </span>
+    </p>
+    <p class="mb-3">
+        <label for="backgroundColorDark" class="form-label">Body Background (Dark)</label>
+        <span class="input-group">
+            <input type="color" class="form-control form-control-color" data-sync="backgroundColorDark">
+            <input id="backgroundColorDark" name="selector([data-color-scheme=dark])::property(--background-color)" type="text" class="form-control" data-sync="backgroundColorDark" data-type="color">
+            <div class="invalid-feedback" data-sync="backgroundColorDark" data-type="feedback"></div>
+        </span>
+    </p>
+</div>
+<div hidden data-hidden-if="[data-color-scheme='light']">
+    <p class="mb-3">
+        <label for="body-color" class="form-label">Body Color</label>
+        <span class="input-group">
+            <input type="color" class="form-control form-control-color" data-sync="text-color">
+            <input id="body-color" name="selector(:root, [data-color-scheme=light])::property(--text-color)" type="text" class="form-control" data-sync="text-color" data-type="color">
+            <div class="invalid-feedback" data-sync="text-color" data-type="feedback"></div>
+        </span>
+    </p>
+    <p class="mb-3">
+        <label for="body-bg" class="form-label">Body Background</label>
+        <span class="input-group">
+            <input type="color" class="form-control form-control-color" data-sync="background-color">
+            <input id="body-bg" name="selector(:root, [data-color-scheme=light])::property(--background-color)" type="text" class="form-control" data-sync="background-color" data-type="color">
+            <div class="invalid-feedback" data-sync="background-color" data-type="feedback"></div>
+        </span>
+    </p>
+</div>
+  <h4>Colors</h4>
+  <p>
+    <input id="backgroundColor" name="selector(:root)::property(--background-color)" type="color" class="form-control"/> 
+    <label for="backgroundColor" class="form-label">Background Color</label>
+  </p>
+  <p>
+    <input id="textColor" name="selector(:root)::property(--text-color)" type="color" class="form-control"/>
+    <label for="textColor" class="form-label">Text Color</label>
+  </p>
+  <p>
+    <input id="textColor" name="selector(:root)::property(--border-color)" type="color" class="form-control"/>
+    <label for="textColor" class="form-label">Border Color</label>
+  </p>
+  <p>
+    <input id="primaryColor" name="selector(:root)::property(--primary-color)" type="color" class="form-control" />
+    <label for="primaryColor" class="form-label">Primary Color</label>
+  </p>
+  <p>
+    <input id="errorColor" name="selector(:root)::property(--error-color)" type="color" class="form-control" />
+    <label for="errorColor" class="form-label">Error Color</label>
+  </p>
+
+  <h4>Typography</h4>
+  <p>
+    <label class="form-label" for="fontFamily">Font Family</label>
+    <select class="form-control" name="selector(:root)::property(--font-family)">
+      <option value="Arial">Arial</option>
+      <option value="Times New Roman">Times New Roman</option>
+    </select>
+  </p>
+  <p>
+    <label class="form-label" for="fontSize">Font Size</label>
+    <input id="fontSize"
+      class="form-control"
+      name="selector(:root)::property(--font-size)"
+      data-type="number"
+      data-min="12px"
+      data-max="20px"
+      data-sync="fontSize"
+      data-feedback="#fontSizeFeedback"
+      data-invalid-class="invalid"
+    />
+    <span id="fontSizeFeedback" class="input-feedback"></span>
+
+    <!-- <input id="fontSize"
+      class="form-control"
+      name="selector(:root)::property(--font-size)"
+      type="number"
+      min="12"
+      max="20"
+      data-unit="px"
+    /> -->
+  </p>
+  
+</form>
+<dialog id="codeDialog" class="modal">
+  <!-- <textarea class="form-control" style="width: 100%; min-height: 180px" data-theme-editor-code="#themeEditor"></textarea> -->
+   <div style="overflow: auto; margin-bottom: 1rem">
+     <pre><code data-theme-editor-code="#themeEditor"></code></pre>
+   </div>
+  <button id="copyCodeBtn" class="button button-primary">Copy to Clipboard</button>
+  <button class="button button-secondary" onclick="document.getElementById('codeDialog').close()">Close</button>
+</dialog>
+<button class="button button-primary"  onclick="document.getElementById('codeDialog').showModal()">Code</button>
+
+      </template>
+    </iframe-viewer>
+</p>
+<p>Suppose your theme has a background color, a text color and a border-color exposed as css variables. These properties are used to style your form-control as well.</p>
+<pre><code class="hljs"><span class="hljs-comment">/* theme.css */</span>
+<span class="hljs-selector-pseudo">:root</span>, <span class="hljs-selector-attr">[data-color-scheme=<span class="hljs-string">&quot;light&quot;</span>]</span> {
+  <span class="hljs-attr">--background-color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attr">--text-color</span>: <span class="hljs-number">#000000</span>;
+  <span class="hljs-attr">--border-color</span>: <span class="hljs-number">#aaaaaa</span>;
+  <span class="hljs-attr">--primary-color</span>: <span class="hljs-number">#22bb22</span>;
+  <span class="hljs-attr">--error-color</span>: <span class="hljs-number">#ff0000</span>;
+  <span class="hljs-attr">--primary-text-color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attr">--font-size</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attr">--font-family</span>: Arial;
+  <span class="hljs-attr">--border-width</span>: <span class="hljs-number">1px</span>;
+}
+
+<span class="hljs-selector-attr">[data-color-scheme=<span class="hljs-string">&quot;dark&quot;</span>]</span> {
+  <span class="hljs-attr">--background-color</span>: <span class="hljs-number">#000000</span>;
+  <span class="hljs-attr">--text-color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attr">--border-color</span>: <span class="hljs-number">#888888</span>;
+}
+
+* {
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--background-color);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--text-color);
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-built_in">var</span>(--font-size);
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-built_in">var</span>(--font-family);
+}
+
+<span class="hljs-selector-class">.form-control</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--background-color);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--text-color);
+  <span class="hljs-attribute">border</span>: <span class="hljs-built_in">var</span>(--border-width) solid <span class="hljs-built_in">var</span>(--border-color);
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-class">.form-control</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;color&quot;</span>]</span>)<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;radio&quot;</span>]</span>)<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;checkbox&quot;</span>]</span>) {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.4rem</span> <span class="hljs-number">0.6rem</span>;
+  <span class="hljs-attribute">display</span>: block;
+}
+
+<span class="hljs-selector-class">.form-control</span><span class="hljs-selector-pseudo">:invalid</span> {
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">var</span>(--error-color);
+}
+
+<span class="hljs-selector-class">.input-feedback</span> {
+  <span class="hljs-attribute">display</span>: none;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">80%</span>;
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0.25rem</span>;
+}
+
+<span class="hljs-selector-class">.form-control</span><span class="hljs-selector-pseudo">:invalid</span> ~ <span class="hljs-selector-class">.input-feedback</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--error-color);
+  <span class="hljs-attribute">display</span>: block;
+}
+
+<span class="hljs-selector-class">.form-label</span> {
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">margin-bottom</span>: .<span class="hljs-number">5rem</span>;
+}
+
+<span class="hljs-selector-class">.form-control</span> + <span class="hljs-selector-class">.form-label</span> {
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">margin-left</span>: .<span class="hljs-number">25rem</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">vertical-align</span>: text-top;
+}
+
+<span class="hljs-selector-class">.radio-group</span> {
+  <span class="hljs-attribute">display</span>: inline-flex;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">1rem</span>;
+}
+
+<span class="hljs-selector-class">.radio-group</span> <span class="hljs-selector-attr">[type=<span class="hljs-string">&quot;radio&quot;</span>]</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.input-group</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">align-items</span>: stretch;
+}
+
+<span class="hljs-selector-class">.input-group</span> <span class="hljs-selector-class">.form-control</span> {
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-comment">/*flex: 1 1 auto;
+    width: 1%;*/</span>
+    <span class="hljs-attribute">min-width</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">height</span>: auto;
+}
+
+<span class="hljs-selector-class">.input-group</span> <span class="hljs-selector-class">.form-control</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first</span>-child) {
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border-top-left-radius</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border-bottom-left-radius</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.input-group</span> <span class="hljs-selector-class">.form-control</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:last-child</span>) {
+  <span class="hljs-attribute">border-top-right-radius</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border-bottom-right-radius</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.button</span> {
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.4rem</span> <span class="hljs-number">0.6rem</span>;
+}
+
+<span class="hljs-selector-class">.button-primary</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--primary-color);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--primary-text-color);
+}
+
+<span class="hljs-selector-class">.modal</span> {
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">70vw</span>;
+}
+
+<span class="hljs-selector-class">.menu</span>,
+<span class="hljs-selector-class">.modal</span> {
+  <span class="hljs-attribute">border-style</span>: solid;
+  <span class="hljs-attribute">border-width</span>: <span class="hljs-built_in">var</span>(--border-width);
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">var</span>(--border-color);
+}
+
+<span class="hljs-selector-class">.menu</span> {
+  <span class="hljs-attribute">overflow</span>: auto;
+  <span class="hljs-attribute">max-height</span>: <span class="hljs-number">280px</span>;
+  <span class="hljs-attribute">width</span>: max-content;
+}
+
+<span class="hljs-selector-class">.menu-item</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.4rem</span> <span class="hljs-number">0.6rem</span>;
+  <span class="hljs-attribute">display</span>: block;
+}
+
+<span class="hljs-selector-class">.menu-item</span><span class="hljs-selector-class">.active</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--background-color);
+}
+
+</code></pre>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;theme.css&quot;</span> <span class="hljs-attr">data-theme-editor-asset</span>=<span class="hljs-string">&quot;inline&quot;</span>/&gt;</span>
+</code></pre>
+<p>Now, we're going to setup our sample page with the embedded theme editor form.</p>
+<p>We're going to have a heading and paragraph in our example.</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Theme Editor<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Generate a stylesheet for your theme<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p>To draw the attention to our form, we need to provide a <code>data-theme-editor</code> attribute.
+We target our theme parameters by specifying a selector and the property on the name attribute of the form element. Theme Editor Kit takes care about updating the stylesheet on every form change.</p>
+<p>Theme parameters and their scoped selectors are declared on the name attribute of the form elements, e.g.</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;themeEditor&quot;</span> <span class="hljs-attr">data-theme-editor</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Color Scheme<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Color Scheme<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio-group&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio-item&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-light&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(body)::attribute(data-color-scheme)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;light&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;theme-light&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Light<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio-item&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-dark&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(body)::attribute(data-color-scheme)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;dark&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;theme-dark&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Dark<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">hidden</span> <span class="hljs-attr">data-hidden-if</span>=<span class="hljs-string">&quot;[data-color-scheme=&#x27;dark&#x27;]&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mb-3&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;textColorDark&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Body Color (Dark)<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-color&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;textColorDark&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;textdColorDark&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector([data-color-scheme=dark])::property(--text-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>  <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;textColorDark&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;color&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;invalid-feedback&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;textColorDark&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;feedback&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mb-3&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;backgroundColorDark&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Body Background (Dark)<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-color&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;backgroundColorDark&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;backgroundColorDark&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector([data-color-scheme=dark])::property(--background-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;backgroundColorDark&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;color&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;invalid-feedback&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;backgroundColorDark&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;feedback&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">hidden</span> <span class="hljs-attr">data-hidden-if</span>=<span class="hljs-string">&quot;[data-color-scheme=&#x27;light&#x27;]&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mb-3&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;body-color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Body Color<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-color&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;text-color&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;body-color&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root, [data-color-scheme=light])::property(--text-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;text-color&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;color&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;invalid-feedback&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;text-color&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;feedback&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mb-3&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;body-bg&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Body Background<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-group&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control form-control-color&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;background-color&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;body-bg&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root, [data-color-scheme=light])::property(--background-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;background-color&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;color&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;invalid-feedback&quot;</span> <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;background-color&quot;</span> <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;feedback&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Colors<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;backgroundColor&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root)::property(--background-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>/&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;backgroundColor&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Background Color<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;textColor&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root)::property(--text-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;textColor&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Text Color<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;textColor&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root)::property(--border-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;textColor&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Border Color<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;primaryColor&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root)::property(--primary-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;primaryColor&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Primary Color<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;errorColor&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root)::property(--error-color)&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;errorColor&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span>&gt;</span>Error Color<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Typography<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;fontFamily&quot;</span>&gt;</span>Font Family<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root)::property(--font-family)&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Arial&quot;</span>&gt;</span>Arial<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Times New Roman&quot;</span>&gt;</span>Times New Roman<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;fontSize&quot;</span>&gt;</span>Font Size<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fontSize&quot;</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>
+      <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;selector(:root)::property(--font-size)&quot;</span>
+      <span class="hljs-attr">data-type</span>=<span class="hljs-string">&quot;number&quot;</span>
+      <span class="hljs-attr">data-min</span>=<span class="hljs-string">&quot;12px&quot;</span>
+      <span class="hljs-attr">data-max</span>=<span class="hljs-string">&quot;20px&quot;</span>
+      <span class="hljs-attr">data-sync</span>=<span class="hljs-string">&quot;fontSize&quot;</span>
+      <span class="hljs-attr">data-feedback</span>=<span class="hljs-string">&quot;#fontSizeFeedback&quot;</span>
+      <span class="hljs-attr">data-invalid-class</span>=<span class="hljs-string">&quot;invalid&quot;</span>
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fontSizeFeedback&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;input-feedback&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- &lt;input id=&quot;fontSize&quot;
+      class=&quot;form-control&quot;
+      name=&quot;selector(:root)::property(--font-size)&quot;
+      type=&quot;number&quot;
+      min=&quot;12&quot;
+      max=&quot;20&quot;
+      data-unit=&quot;px&quot;
+    /&gt; --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>Let's write the generated css to a textarea component:</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">dialog</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;codeDialog&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;modal&quot;</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- &lt;textarea class=&quot;form-control&quot; style=&quot;width: 100%; min-height: 180px&quot; data-theme-editor-code=&quot;#themeEditor&quot;&gt;&lt;/textarea&gt; --&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;overflow: auto; margin-bottom: 1rem&quot;</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span> <span class="hljs-attr">data-theme-editor-code</span>=<span class="hljs-string">&quot;#themeEditor&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;copyCodeBtn&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-primary&quot;</span>&gt;</span>Copy to Clipboard<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;document.getElementById(&#x27;codeDialog&#x27;).close()&quot;</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dialog</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button button-primary&quot;</span>  <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;document.getElementById(&#x27;codeDialog&#x27;).showModal()&quot;</span>&gt;</span>Code<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+
+      </div>
+    </div>
+    
+  </div>
+</main>
+
+    <div class="footer">
+      <div class="center">
+        Powered by <a target="_blank" href="https://benignware.com">Benignware</a>
+      </div>
+    </div>
+  </body>
+</html>
