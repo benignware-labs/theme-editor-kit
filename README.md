@@ -75,7 +75,8 @@ body {
   margin-top: 0.25rem;
 }
 
-.form-control:invalid ~ .input-feedback {
+.form-control:invalid ~ .input-feedback,
+.input-feedback.is-invalid {
   color: var(--error-color);
   display: block;
 }
@@ -224,18 +225,18 @@ Theme parameters and their scoped selectors are declared on the name attribute o
     <p class="mb-3">
         <label for="body-color" class="form-label">Body Color</label>
         <span class="input-group">
-            <input type="color" class="form-control form-control-color" data-sync="text-color">
-            <input id="body-color" name="selector(:root, [data-color-scheme=light])::property(--text-color)" type="text" class="form-control" data-sync="text-color" data-type="color">
-            <div class="invalid-feedback" data-sync="text-color" data-type="feedback"></div>
+            <input type="color" class="form-control form-control-color" data-sync="textColor">
+            <input id="body-color" name="selector(:root, [data-color-scheme=light])::property(--text-color)" type="text" class="form-control" data-sync="textColor" data-type="color">
         </span>
+        <span class="input-feedback" data-sync="textColor" data-type="feedback"></span>
     </p>
     <p class="mb-3">
         <label for="body-bg" class="form-label">Body Background</label>
         <span class="input-group">
             <input type="color" class="form-control form-control-color" data-sync="background-color">
             <input id="body-bg" name="selector(:root, [data-color-scheme=light])::property(--background-color)" type="text" class="form-control" data-sync="background-color" data-type="color">
-            <div class="invalid-feedback" data-sync="background-color" data-type="feedback"></div>
         </span>
+        <span class="input-feedback" data-sync="background-color" data-type="feedback"></span>
     </p>
 </div>
 
