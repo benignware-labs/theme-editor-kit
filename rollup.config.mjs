@@ -1,4 +1,3 @@
-console.log('rollup.config.js');
 import terser from '@rollup/plugin-terser';
 
 export default {

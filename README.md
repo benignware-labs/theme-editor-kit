@@ -33,6 +33,7 @@ Suppose your theme has a background color, a text color and a border-color expos
   --font-size: 16px;
   --font-family: Arial;
   --border-width: 1px;
+  --border-radius: 5px;
 }
 
 [data-color-scheme="dark"] {
@@ -56,7 +57,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   border: var(--border-width) solid var(--border-color);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 }
 
 .form-control:not([type="color"]):not([type="radio"]):not([type="checkbox"]) {
@@ -139,25 +140,27 @@ body {
   max-width: 70vw;
 }
 
-.menu,
+.dropdown,
 .modal {
   border-style: solid;
   border-width: var(--border-width);
   border-color: var(--border-color);
+  border-radius: var(--border-radius);
 }
 
-.menu {
+.dropdown {
+  background: var(--background-color);
   overflow: auto;
   max-height: 280px;
   width: max-content;
 }
 
-.menu-item {
+.dropdown-item {
   padding: 0.4rem 0.6rem;
   display: block;
 }
 
-.menu-item.active {
+.dropdown-item.active {
   background-color: var(--background-color);
 }
 
@@ -235,41 +238,27 @@ Theme parameters and their scoped selectors are declared on the name attribute o
         </span>
     </p>
 </div>
-  <h4>Colors</h4>
-  <p>
-    <input id="backgroundColor" name="selector(:root)::property(--background-color)" type="color" class="form-control"/> 
-    <label for="backgroundColor" class="form-label">Background Color</label>
-  </p>
-  <p>
-    <input id="textColor" name="selector(:root)::property(--text-color)" type="color" class="form-control"/>
-    <label for="textColor" class="form-label">Text Color</label>
-  </p>
-  <p>
-    <input id="textColor" name="selector(:root)::property(--border-color)" type="color" class="form-control"/>
-    <label for="textColor" class="form-label">Border Color</label>
-  </p>
-  <p>
-    <input id="primaryColor" name="selector(:root)::property(--primary-color)" type="color" class="form-control" />
-    <label for="primaryColor" class="form-label">Primary Color</label>
-  </p>
-  <p>
-    <input id="errorColor" name="selector(:root)::property(--error-color)" type="color" class="form-control" />
-    <label for="errorColor" class="form-label">Error Color</label>
-  </p>
 
-  <h4>Typography</h4>
+<h4>Typography</h4>
   <p>
     <label class="form-label" for="fontFamily">Font Family</label>
-    <select class="form-control" name="selector(:root)::property(--font-family)">
+    <!--<select class="form-control" name="selector(:root)::property(--font-family)">
       <option value="Arial">Arial</option>
       <option value="Times New Roman">Times New Roman</option>
-    </select>
+    </select>-->
+    <input
+      class="form-control"
+      name="selector(:root, [data-color-scheme=light])::property(--font-family)"
+      data-type="font"
+      data-dropdown-class="dropdown"
+      data-dropdown-item-class="dropdown-item"
+    />
   </p>
   <p>
     <label class="form-label" for="fontSize">Font Size</label>
     <input id="fontSize"
       class="form-control"
-      name="selector(:root)::property(--font-size)"
+      name="selector(:root, [data-color-scheme=light])::property(--font-size)"
       data-type="number"
       data-min="12px"
       data-max="20px"
@@ -288,7 +277,16 @@ Theme parameters and their scoped selectors are declared on the name attribute o
       data-unit="px"
     /> -->
   </p>
-  
+
+  <h4>Theme Colors</h4>
+  <p>
+    <input id="primaryColor" name="selector(:root, [data-color-scheme=light])::property(--primary-color)" type="color" class="form-control" />
+    <label for="primaryColor" class="form-label">Primary Color</label>
+  </p>
+  <p>
+    <input id="errorColor" name="selector(:root, [data-color-scheme=light])::property(--error-color)" type="color" class="form-control" />
+    <label for="errorColor" class="form-label">Error Color</label>
+  </p>
 </form>
 ```
 

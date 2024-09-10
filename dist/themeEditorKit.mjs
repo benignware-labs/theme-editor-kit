@@ -476,12 +476,17 @@ class Suggest {
       throw new TypeError('inputElement must be an HTML element');
     }
 
-    this.inputElement = inputElement;
-    this.options = options;
+    
 
-    this.dropdownClass = options.dropdownClass || 'menu';
-    this.dropdownItemClass = options.dropdownItemClass || 'menu-item';
-    this.dropdownItemActiveClass = options.dropdownItemActiveClass || 'active';
+    this.inputElement = inputElement;
+    this.options = {
+      ...options,
+      ...inputElement.dataset
+    };
+
+    this.dropdownClass = this.options.dropdownClass || 'menu';
+    this.dropdownItemClass = this.options.dropdownItemClass || 'menu-item';
+    this.dropdownItemActiveClass = this.options.dropdownItemActiveClass || 'active';
 
     // Extract options
     this.data = options.data || [];
@@ -539,6 +544,11 @@ class Suggest {
       this.inputElement.parentNode.insertBefore(this.dropdownElement, this.inputElement.nextSibling);
     }
 
+    this.dropdownElement.style.position = 'absolute';
+    this.dropdownElement.style.left = 'auto';
+    this.dropdownElement.style.top = 'auto';
+    this.dropdownElement.style.display = 'none';
+
     this.populateDropdown();
 
     this.inputElement.addEventListener('focus', this.onFocus);
@@ -591,13 +601,12 @@ class Suggest {
     this.selectedOption = option;
     this.inputElement.value = option;
     this.dropdownElement.style.display = 'none';
+    
 
     // Call the onSelect callback
     if (this.onSelect) {
       this.onSelect(option);
     }
-
-    console.log('selectOption', option);
 
     // Fire native input and change events
     this.inputElement.dispatchEvent(new Event('input', { bubbles: true }));
@@ -615,11 +624,9 @@ class Suggest {
   }
 
   handleChange(e) {
-    console.log('handleChange', e.target.value);
   }
 
   handleInput(e) {
-    console.log('handleInput', e.target.value);
     const query = e.target.value.toLowerCase().trim();
     this.menuItems.forEach(div => {
       const option = div.dataset.option.toLowerCase();
@@ -635,7 +642,6 @@ class Suggest {
     // const event = new CustomEvent('optionSelected', { detail: { optionName: e.target.value } });
     // document.dispatchEvent(event);
     // Call the onSelect callback
-    console.log('handleProgrammaticInput', e.target.value);
     if (this.onSelect) {
       this.onSelect(e.target.value);
     }
@@ -690,12 +696,14 @@ const googleFonts = [
 const fontInputRegistry = {};
 
 const handleFormChange = (event) => {
-    const form = event.target;
+    const form = event.currentTarget;
     const fontInputs = form.querySelectorAll('[data-type="font"]');
     
     fontInputs.forEach((fontInput) => {
-        if (googleFonts.includes(fontInput.value)) {
-            addGoogleFont(fontInput.value);
+        const fontFamily = fontInput.value?.trim();
+       
+        if (fontFamily && googleFonts.includes(fontFamily)) {
+            addGoogleFont(fontFamily);
         }
     });
 };
@@ -708,10 +716,10 @@ const initFormFonts = (form) => {
             data: deviceFonts.concat(googleFonts),
         });
 
-        form.addEventListener('change', handleFormChange);
-
         fontInputRegistry[fontInput.id] = suggest;
     });
+
+    form.addEventListener('change', handleFormChange);
 };
 
 const disposeFormFonts = (form) => {
@@ -746,7 +754,6 @@ const themeEditorRegistry = new Map();
 
 class ThemeEditor {
   constructor(form) {
-    console.log('*** INIT FORM:', form);
     this.form = form;
     this.stylesheetId = this.generateUniqueId();
     this.initializeForm();
@@ -775,8 +782,6 @@ class ThemeEditor {
 
   initializeForm() {
     this.initialValues = this.getInitialValues();
-
-    console.log('*** INITIAL VALUES:', this.initialValues);
 
     for (const [name, value] of Object.entries(this.initialValues)) {
       const element = this.form.elements[name];
@@ -807,8 +812,6 @@ class ThemeEditor {
   getInitialValues() {
     const initialValues = {};
     const namedElements = [...this.form.elements].filter(element => element.name);
-
-    console.log('*** NAMED ELEMENTS:', namedElements);
 
     for (const element of namedElements) {
       const name = element.name;
@@ -878,8 +881,6 @@ class ThemeEditor {
       stylesheetContent += `}\n`;
     }
 
-    console.log('*** STYLESHEET CONTENT:', stylesheetContent);
-
     let styleSheet = document.getElementById(this.stylesheetId);
 
     if (!styleSheet) {
@@ -899,11 +900,7 @@ class ThemeEditor {
         const trimmedSelector = selector.replace(/^selector\(/, '').replace(/\)$/, '').trim();
         const trimmedAttributeName = attributeName.replace(/^\(|\)$/g, '').trim();
 
-        console.log('trimmedSelector: ', trimmedSelector);
-
         const elements = document.querySelectorAll(trimmedSelector);
-
-        console.log('elements:', elements);
 
         elements.forEach(element => {
           if (element.getAttribute(trimmedAttributeName) !== value) {
@@ -917,8 +914,6 @@ class ThemeEditor {
   updateCodeSlot(code) {
     const codeSlots = [...document.querySelectorAll('[data-theme-editor-code]')]
       .filter(slot => this.form.matches(slot.dataset.themeEditorCode));
-
-    console.log('*** CODE SLOTS:', codeSlots);
     
     const assets = [...document.querySelectorAll('[data-theme-editor-asset]')].map(element => {
       const inline = element.getAttribute('data-theme-editor-asset') || !!element.textContent;
@@ -1034,13 +1029,8 @@ class ThemeEditor {
   }
 }
 
-console.log('Theme form module loaded');
-
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded and parsed', document);
   const forms = document.querySelectorAll('form[data-theme-editor]');
-
-  console.log('Theme forms:', forms);
 
   forms.forEach(form => {
     new ThemeEditor(form);
@@ -1049,7 +1039,6 @@ document.addEventListener('DOMContentLoaded', () => {
   observe(
     'form[data-theme-editor]',
     (addedNode) => {
-      console.log('Form added:', addedNode);
       new ThemeEditor(addedNode);
     },
     (removedNode) => {
@@ -1058,7 +1047,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (editor) {
         editor.dispose();
       }
-      console.log('Form removed and disposed:', removedNode);
     }
   );
   
