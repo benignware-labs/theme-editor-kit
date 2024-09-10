@@ -231,8 +231,12 @@ function validateInput(element, valueAsNumber, syncProps = null) {
 
   const syncGroup = getSyncGroup(element);
 
+  console.log('feedbackElements: ', feedbackElements);
+
   if (feedbackElements) {
     feedbackElements.forEach(feedbackElement => {
+      feedbackElement.style.display = isValid ? 'none' : 'block';
+      feedbackElement.classList.toggle('is-invalid', !isValid);
       feedbackElement.innerHTML = invalidFeedback;
     });
   }
@@ -324,14 +328,10 @@ function getSyncProps(element, targetUnit = null) {
         : stepAsNumber
       : acc.step;
 
-    typeof dataset.feedback !== 'undefined' ? dataset.feedback : dataset.type === 'feedback';
-    
-    if (typeof dataset.feedback !== 'undefined') {
-      if (dataset.feedback) {
-        acc.feedbackSelector = dataset.feedback;
-      } else if (dataset.feedback === '') {
-        acc.feedbackElements = acc.feedbackElements ? [...acc.feedbackElements, el] : [el];
-      }
+    if (dataset.feedback) {
+      acc.feedbackSelector = dataset.feedback;
+    } else if (dataset.feedback === '' || dataset.type === 'feedback') {
+      acc.feedbackElements = acc.feedbackElements ? [...acc.feedbackElements, el] : [el];
     }
 
     return {
@@ -545,7 +545,6 @@ class Suggest {
     }
 
     this.dropdownElement.style.position = 'absolute';
-    this.dropdownElement.style.left = 'auto';
     this.dropdownElement.style.top = 'auto';
     this.dropdownElement.style.display = 'none';
 
